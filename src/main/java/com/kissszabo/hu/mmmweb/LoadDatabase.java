@@ -1,8 +1,14 @@
 package com.kissszabo.hu.mmmweb;
 
 
+import com.kissszabo.hu.mmmweb.controller.MassageController;
+import com.kissszabo.hu.mmmweb.entity.Massage;
+import com.kissszabo.hu.mmmweb.repository.MassageRepository;
+import com.kissszabo.hu.mmmweb.service.MassageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,15 +30,17 @@ class LoadDatabase {
         dataSourceBuilder.password("");
         return dataSourceBuilder.build();
     }
-/*
-    @Bean
-    CommandLineRunner initDatabase(ReservationRepository repository) {
 
+    @Bean
+    CommandLineRunner initDatabase(MassageRepository repository) {
         return args -> {
-            log.info("Preloading " + repository.save(new Reservation("hehe@gmail.com")));
-            log.info("Preloading " + repository.save(new Reservation("xd@gmail.com")));
+            //log.info("Preloading " + repository.save(new Massage("hehe@gmail.com",12)));
+            //log.info("Preloading " + repository.save(new Massage("xd@gmail.com",15)));
+            repository.findAll().stream().forEach(c-> log.info(c.toString()));
+
         };
+
     }
 
- */
+
 }

@@ -1,10 +1,11 @@
 package com.kissszabo.hu.mmmweb.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "MASSAGE")
-public class Massage {
+public class Massage implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

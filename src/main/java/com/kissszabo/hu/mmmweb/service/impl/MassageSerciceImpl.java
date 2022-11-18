@@ -11,10 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 @Transactional
 public class MassageSerciceImpl implements MassageService {
+    Logger logger = Logger.getLogger("SERVICE");
+
     @Autowired
     private MassageRepository repo;
 

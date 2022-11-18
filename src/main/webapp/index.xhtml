@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<h:body style="margin-left:50px">
+    <h2>Massages sortlist</h2>
+    <h:form>
+    <div class="card">
+    <p:dataTable var="massage" value="#{massageController.uitoList}" id="massageTable"
+                 lazy="false" sortBy="#{massageController.sortBy}" sortMode="single"
+                 allowUnsorting="true" >
+
+        <p:column headerText="Id" sortBy="#{massage.id}" filterBy="#{massage.id}">
+            <h:outputText value="#{massage.id}"/>
+        </p:column>
+        <p:column headerText="Name" sortBy="#{massage.name}" filterBy="#{massage.name}">
+            <h:outputText  value="#{massage.name}"/>
+        </p:column>
+        <p:column headerText="Length" sortBy="#{massage.length}" filterBy="#{massage.length}">
+            <h:outputText value="#{massage.length}"/>
+        </p:column>
+
+    </p:dataTable>
+    </div>
+    </h:form>
+</h:body>
+</html>
