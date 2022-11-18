@@ -1,11 +1,9 @@
-package com.kissszabo.hu.MMMWeb.Entitiy;
+package com.kissszabo.hu.mmmweb.entity;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Date;
 
 @Entity
 @Table(name = "reservation")

@@ -1,4 +1,4 @@
-package com.kissszabo.hu.MMMWeb;
+package com.kissszabo.hu.mmmweb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

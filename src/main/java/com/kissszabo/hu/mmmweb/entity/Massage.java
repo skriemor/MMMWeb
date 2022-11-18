@@ -1,10 +1,9 @@
-package com.kissszabo.hu.MMMWeb.Entitiy;
+package com.kissszabo.hu.mmmweb.entity;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "massage")
+@Table(name = "MASSAGE")
 public class Massage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,9 +11,6 @@ public class Massage {
 
     @Column(nullable = false)
     String name;
-
-    @ManyToOne
-    private Reservation reservation;
 
     @Column(nullable = false)
     int length;
@@ -54,7 +50,6 @@ public class Massage {
         return "Massage{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", reservation=" + reservation +
                 ", length=" + length +
                 '}';
     }

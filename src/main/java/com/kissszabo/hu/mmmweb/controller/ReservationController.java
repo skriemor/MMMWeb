@@ -1,10 +1,10 @@
-package com.kissszabo.hu.MMMWeb.Controller;
+package com.kissszabo.hu.mmmweb.controller;
 
 import java.util.List;
 
-import com.kissszabo.hu.MMMWeb.Entitiy.Reservation;
-import com.kissszabo.hu.MMMWeb.Exception.ReservationNotFoundException;
-import com.kissszabo.hu.MMMWeb.Repository.ReservationRepository;
+import com.kissszabo.hu.mmmweb.entity.Reservation;
+import com.kissszabo.hu.mmmweb.exception.ReservationNotFoundException;
+import com.kissszabo.hu.mmmweb.repository.ReservationRepository;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

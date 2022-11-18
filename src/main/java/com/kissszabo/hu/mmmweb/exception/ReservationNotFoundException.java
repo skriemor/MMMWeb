@@ -1,4 +1,4 @@
-package com.kissszabo.hu.MMMWeb.Exception;
+package com.kissszabo.hu.mmmweb.exception;
 
 public class ReservationNotFoundException extends RuntimeException {
 

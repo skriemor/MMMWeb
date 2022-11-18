@@ -1,11 +1,8 @@
-package com.kissszabo.hu.MMMWeb;
+package com.kissszabo.hu.mmmweb;
 
 
-import com.kissszabo.hu.MMMWeb.Entitiy.Reservation;
-import com.kissszabo.hu.MMMWeb.Repository.ReservationRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

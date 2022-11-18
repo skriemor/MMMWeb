@@ -1,7 +1,7 @@
-package com.kissszabo.hu.MMMWeb.Advice;
+package com.kissszabo.hu.mmmweb.advice;
 
 
-import com.kissszabo.hu.MMMWeb.Exception.ReservationNotFoundException;
+import com.kissszabo.hu.mmmweb.exception.ReservationNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -4,7 +4,7 @@
     <persistence-units>
       <persistence-unit name="MMMUnit">
         <packages>
-          <package value="com.kissszabo.hu.MMMWeb" />
+          <package value="com.kissszabo.hu.mmmweb" />
         </packages>
       </persistence-unit>
     </persistence-units>
