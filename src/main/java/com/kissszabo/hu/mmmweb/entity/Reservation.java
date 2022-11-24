@@ -1,25 +1,30 @@
 package com.kissszabo.hu.mmmweb.entity;
 
 import org.springframework.data.rest.core.annotation.RestResource;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Calendar;
 
 @Entity
-@Table(name = "reservation")
+@Table(name = "RESERVATION")
 public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "massage_id")
-    @RestResource(path = "massagetype", rel = "massageType")
     Massage massageType;
 
+    @Column(name = "startdate")
+    @DateTimeFormat(pattern = "yyyy.MM.dd")
     Calendar startDate;
+    @Column(name = "email")
     String customerEmail;
+    @Column(name = "enddate")
+    @DateTimeFormat(pattern = "yyyy.MM.dd")
     Calendar endDate;
 
 
@@ -67,10 +72,6 @@ public class Reservation implements Serializable {
 
     public Calendar getStartDate() {
         return startDate;
-    }
-
-    public Calendar getEndDate() {
-        return endDate;
     }
 
     public Massage getMassageType() {
