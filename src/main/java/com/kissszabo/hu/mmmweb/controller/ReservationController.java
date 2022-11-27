@@ -51,19 +51,11 @@ public class ReservationController implements Serializable {
         getAllReservations();
     }
 
-    private void getAllReservations() {
-        this.setMassageUITOS(massageService.getAllMassages());
-        this.setReservationUITOS(reservationService.getAllReservations());
-        this.setActionLabel("Add");
-    }
-
-
     @PostConstruct
     public void init() {
-        getAllReservations();
         sortBy = new ArrayList<>();
         sortBy.add(SortMeta.builder()
-                .field("id")
+                .field("customerEmail")
                 .order(SortOrder.ASCENDING)
                 .build());
 /*
@@ -75,7 +67,12 @@ public class ReservationController implements Serializable {
 */
     }
 
-
+    @PostConstruct
+    private void getAllReservations() {
+        this.setMassageUITOS(massageService.getAllMassages());
+        this.setReservationUITOS(reservationService.getAllReservations());
+        this.setActionLabel("Add");
+    }
     public void setActionLabel(String actionLabel) {
         this.actionLabel = actionLabel;
     }

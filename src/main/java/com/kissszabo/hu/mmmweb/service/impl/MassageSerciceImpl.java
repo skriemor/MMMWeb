@@ -2,6 +2,7 @@ package com.kissszabo.hu.mmmweb.service.impl;
 
 import com.kissszabo.hu.mmmweb.dto.MassageUITO;
 import com.kissszabo.hu.mmmweb.entity.Massage;
+import com.kissszabo.hu.mmmweb.mapper.MassageTOMapper;
 import com.kissszabo.hu.mmmweb.repository.MassageRepository;
 import com.kissszabo.hu.mmmweb.service.MassageService;
 import org.springframework.beans.BeanUtils;
@@ -18,45 +19,29 @@ import java.util.logging.Logger;
 public class MassageSerciceImpl implements MassageService {
     Logger logger = Logger.getLogger("SERVICE");
 
+    MassageTOMapper mapper = new MassageTOMapper();
     @Autowired
     private MassageRepository repo;
 
     @Override
     @Transactional
     public MassageUITO saveMassage(MassageUITO massageUITO) {
-        var dto = new Massage();
-        BeanUtils.copyProperties(massageUITO,dto);
-        dto = repo.save(dto);
-        BeanUtils.copyProperties(dto,massageUITO);
-        return massageUITO;
+        return mapper.mDtoToUito(repo.save(mapper.mUitoToDto(massageUITO)));
     }
     @Override
     public List<MassageUITO> getAllMassages() {
-        List<MassageUITO> uitoList = new ArrayList<MassageUITO>();
-        repo.findAll().stream().forEach(
-                mass-> {
-                    MassageUITO uito = new MassageUITO();
-                    BeanUtils.copyProperties(mass,uito);
-                    uitoList.add(uito);
-                }
-        );
-        return uitoList;
+        return new ArrayList<MassageUITO>(repo.findAll().stream()
+                .map(m -> mapper.mDtoToUito(m)).toList());
     }
 
     @Override
     public MassageUITO getMassage(MassageUITO massageUITO) {
-        var dto = repo.findById(massageUITO.getId());
-        var uito = new MassageUITO();
-        BeanUtils.copyProperties(dto,uito);
-        return uito;
+        return mapper.mDtoToUito(repo.findById(massageUITO.getId()).get());
     }
 
     @Override
     public MassageUITO getMassageByName(String name) {
-        var dto = repo.findMassageByName(name);
-        var uito = new MassageUITO();
-        BeanUtils.copyProperties(dto,uito);
-        return uito;
+         return mapper.mDtoToUito(repo.findMassageByName(name));
     }
     @Override
     @Transactional

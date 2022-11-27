@@ -57,7 +57,7 @@ class LoadDatabase {
             uito1.setMassageType(uito);
             uito1.setEndDate(LocalDateTime.now().plusMinutes(uito.getLength()));
             log.info("" + uito1.toString() +"\n" + uito.toString());
-            rService.saveReservation(uito1);
+            //rService.saveReservation(uito1);
 
         };
 

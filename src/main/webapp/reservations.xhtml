@@ -17,17 +17,22 @@
                          lazy="false" sortBy="#{reservationController.sortBy}" sortMode="single"
                          allowUnsorting="true" >
 
-                <p:column headerText="Id" sortBy="#{reservation.id}" filterBy="#{reservation.id}">
+                <p:column headerText="Id" sortBy="#{reservation.id}" filterBy="#{reservation.id}" >
                     <h:outputText value="#{reservation.id}"/>
                 </p:column>
-                <p:column headerText="Name" sortBy="#{reservation.customerEmail}" filterBy="#{reservation.customerEmail}">
+                <p:column headerText="E-mail" sortBy="#{reservation.customerEmail}" filterBy="#{reservation.customerEmail}">
                     <h:outputText  value="#{reservation.customerEmail}"/>
                 </p:column>
 
-                <!--p:column headerText="Length" sortBy="#{reservation.massageType.name}" filterBy="#{reservation.massageType.name}">
+                <p:column headerText="Massage Type" sortBy="#{reservation.massageType.name}" filterBy="#{reservation.massageType.name}">
                     <h:outputText value="#{reservation.massageType.name}"/>
                 </p:column>
-               -->
+                <p:column headerText="Start Date" sortBy="#{reservation.startDate}" filterBy="#{reservation.startDate}">
+                    <h:outputText value="#{reservation.startDate}"/>
+                </p:column>
+                <p:column headerText="Expected Finish Date" sortBy="#{reservation.endDate}" filterBy="#{reservation.endDate}">
+                    <h:outputText value="#{reservation.endDate}"/>
+                </p:column>
             </p:dataTable>
         </div>
     </h:form>
