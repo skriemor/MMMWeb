@@ -37,30 +37,34 @@ class ReservationController {
     MassageService massageService;
     private String actionLabel;
     private MassageUITO massageUITO;
+
+
+
     private ReservationUITO reservationUITO;
     private List<MassageUITO> massageUITOS;
     private List<ReservationUITO> reservationUITOS;
 
+    public void editReservation(ReservationUITO ruito) {
+        this.setActionLabel("Update");
+        BeanUtils.copyProperties(ruito,this.getReservationUITO());
+    }
     public void uiSaveReservation() {
         reservationService.saveReservation(this.getReservationUITO());
         getAllReservations();
+        this.setReservationUITO(new ReservationUITO());
+
+    }
+    public void deleteReservation(ReservationUITO uito) {
+        reservationService.DeleteReservation(uito);
+        getAllReservations();
+    }
+    @PostConstruct
+    private void getAllReservations() {
+        this.setMassageUITOS(massageService.getAllMassages());
+        this.setReservationUITOS(reservationService.getAllReservations());
+        this.setActionLabel("Add");
     }
 
-    private ReservationUITO getReservationUITO() {
-        return this.reservationUITO;
-    }
-
-    public List<MassageUITO> getUitoList() {
-        return uitoList;
-    }
-
-    public void setUitoList(List<MassageUITO> uitoList) {
-        this.uitoList = uitoList;
-    }
-
-    public void setService(MassageService service) {
-        this.service = service;
-    }
 
     @PostConstruct
     public void init() {
@@ -78,28 +82,6 @@ class ReservationController {
 */
     }
 
-    @PostConstruct
-    public void getAllMassages() {
-        this.uitoList = service.getAllMassages();
-        this.setActionLabel("Add");
-    }
-    public void deleteMassage(MassageUITO _uito){
-        service.deleteMassage(_uito);
-        this.getAllMassages();
-    }
-    public void editMassage(MassageUITO _uito) {
-        this.setActionLabel("Update");
-        BeanUtils.copyProperties(_uito,this.getUito());
-    }
-
-    public void setUito(MassageUITO uito) {
-        this.uito = uito;
-    }
-
-
-    public MassageUITO getUito() {
-        return uito;
-    }
 
     public void setActionLabel(String actionLabel) {
         this.actionLabel = actionLabel;
@@ -115,5 +97,29 @@ class ReservationController {
 
     public List<SortMeta> getSortBy() {
         return sortBy;
+    }
+
+    private ReservationUITO getReservationUITO() {
+        return this.reservationUITO;
+    }
+
+    public void setReservationUITO(ReservationUITO reservationUITO) {
+        this.reservationUITO = reservationUITO;
+    }
+
+    public void setReservationUITOS(List<ReservationUITO> reservationUITOS) {
+        this.reservationUITOS = reservationUITOS;
+    }
+
+    public List<ReservationUITO> getReservationUITOS() {
+        return reservationUITOS;
+    }
+
+    public List<MassageUITO> getMassageUITOS() {
+        return massageUITOS;
+    }
+
+    public void setMassageUITOS(List<MassageUITO> massageUITOS) {
+        this.massageUITOS = massageUITOS;
     }
 }
