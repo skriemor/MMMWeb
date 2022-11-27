@@ -7,5 +7,8 @@ public interface MassageService {
     List<MassageUITO> getAllMassages();
     MassageUITO getMassage(MassageUITO massageUITO);
     MassageUITO saveMassage(MassageUITO massageUITO);
+
+    MassageUITO getMassageByName(String name);
+
     void deleteMassage(MassageUITO massageUiTO);
 }

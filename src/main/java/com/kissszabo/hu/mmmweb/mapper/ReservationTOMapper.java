@@ -18,7 +18,7 @@ public class ReservationTOMapper {
     public ReservationUITO rDtoToUito(Reservation reservation) {
         ReservationUITO uito = new ReservationUITO();
         MassageUITO massageUITO = new MassageUITO();
-        BeanUtils.copyProperties(reservation.getMassageType(),massageUITO);
+        BeanUtils.copyProperties(reservation.getMassage(),massageUITO);
         BeanUtils.copyProperties(reservation,uito);
         uito.setMassageType(massageUITO);
         return uito;
@@ -29,7 +29,7 @@ public class ReservationTOMapper {
         Massage massageDto = new Massage();
         BeanUtils.copyProperties(uito,dto);
         BeanUtils.copyProperties(uito.getMassageType(),massageDto);
-        dto.setMassageType(massageDto);
+        dto.setMassage(massageDto);
         return dto;
     }
 

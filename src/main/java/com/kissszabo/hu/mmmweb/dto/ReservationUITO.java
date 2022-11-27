@@ -1,14 +1,15 @@
 package com.kissszabo.hu.mmmweb.dto;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class ReservationUITO implements Serializable {
         private Long id;
         MassageUITO massageType;
-        Calendar startDate;
+        LocalDateTime startDate;
         String customerEmail;
-        Calendar endDate;
+    LocalDateTime  endDate;
 
     public Long getId() {
         return id;
@@ -26,11 +27,11 @@ public class ReservationUITO implements Serializable {
         this.massageType = massageType;
     }
 
-    public Calendar getStartDate() {
+    public LocalDateTime  getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Calendar startDate) {
+    public void setStartDate(LocalDateTime  startDate) {
         this.startDate = startDate;
     }
 
@@ -42,11 +43,11 @@ public class ReservationUITO implements Serializable {
         this.customerEmail = customerEmail;
     }
 
-    public Calendar getEndDate() {
-        return endDate;
+    public LocalDateTime  getEndDate() {
+        return this.endDate;
     }
 
-    public void setEndDate(Calendar endDate) {
+    public void setEndDate(LocalDateTime  endDate) {
         this.endDate = endDate;
     }
 

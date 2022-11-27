@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 @Entity
@@ -15,24 +16,24 @@ public class Reservation implements Serializable {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "massage_id")
-    Massage massageType;
+    @JoinColumn(name = "massage_id", referencedColumnName = "massage_id", nullable = false)
+    private Massage massage;
 
     @Column(name = "startdate")
     @DateTimeFormat(pattern = "yyyy.MM.dd")
-    Calendar startDate;
+    LocalDateTime startDate;
     @Column(name = "email")
     String customerEmail;
     @Column(name = "enddate")
     @DateTimeFormat(pattern = "yyyy.MM.dd")
-    Calendar endDate;
+    LocalDateTime endDate;
 
 
-    public Reservation(Massage massageType, Calendar startDate, String customerEmail) {
-        this.massageType = massageType;
+    public Reservation(Massage massage, LocalDateTime startDate, String customerEmail) {
+        this.massage = massage;
         this.startDate = startDate;
         this.customerEmail = customerEmail;
-        this.endDate = CalculateEndDate(startDate, massageType);
+        this.endDate = startDate;
     }
 
     public Reservation(String customerEmail) {
@@ -44,15 +45,11 @@ public class Reservation implements Serializable {
     }
 
 
-    public void setEndDate() {
-        this.endDate = CalculateEndDate(this.startDate, this.massageType);
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
     }
 
-    private Calendar CalculateEndDate(Calendar startDate, Massage massageType) {
-        Calendar endCalDate = startDate;
-        endCalDate.add(Calendar.MINUTE, massageType.getLength());
-        return endCalDate;
-    }
+
 
     public Long getId() {
         return id;
@@ -66,24 +63,24 @@ public class Reservation implements Serializable {
         this.customerEmail = customerEmail;
     }
 
-    public void setStartDate(Calendar startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public Calendar getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public Massage getMassageType() {
-        return massageType;
+    public Massage getMassage() {
+        return massage;
     }
 
     public String getCustomerEmail() {
         return customerEmail;
     }
 
-    public void setMassageType(Massage massageType) {
-        this.massageType = massageType;
+    public void setMassage(Massage massage) {
+        this.massage = massage;
     }
 
 

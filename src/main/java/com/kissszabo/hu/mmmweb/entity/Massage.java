@@ -2,15 +2,19 @@ package com.kissszabo.hu.mmmweb.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "MASSAGE")
 public class Massage implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "massage_id")
     private Long id;
 
-    @Column(nullable = false)
+    @OneToMany(mappedBy = "massage", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Reservation> reservationList;
+    @Column(nullable = false,name = "name")
     String name;
 
     @Column(nullable = false)

@@ -1,7 +1,6 @@
 package com.kissszabo.hu.mmmweb.controller;
 
 import com.kissszabo.hu.mmmweb.dto.MassageUITO;
-import com.kissszabo.hu.mmmweb.repository.MassageRepository;
 import com.kissszabo.hu.mmmweb.service.MassageService;
 import org.primefaces.model.SortMeta;
 import org.primefaces.model.SortOrder;
@@ -9,10 +8,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.annotation.SessionScope;
-
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

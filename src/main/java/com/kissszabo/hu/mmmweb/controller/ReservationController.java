@@ -2,12 +2,8 @@ package com.kissszabo.hu.mmmweb.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.kissszabo.hu.mmmweb.dto.MassageUITO;
 import com.kissszabo.hu.mmmweb.dto.ReservationUITO;
-import com.kissszabo.hu.mmmweb.entity.Reservation;
-import com.kissszabo.hu.mmmweb.exception.ReservationNotFoundException;
-import com.kissszabo.hu.mmmweb.repository.ReservationRepository;
 import com.kissszabo.hu.mmmweb.service.MassageService;
 import com.kissszabo.hu.mmmweb.service.ReservationService;
 import org.primefaces.model.SortMeta;
@@ -15,20 +11,16 @@ import org.primefaces.model.SortOrder;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.annotation.SessionScope;
-
 import javax.annotation.PostConstruct;
+import java.io.Serializable;
+
+
+
 
 @SessionScope
 @Controller("reservationController")
-class ReservationController {
+public class ReservationController implements Serializable {
 
     private List<SortMeta> sortBy;
     @Autowired
@@ -58,7 +50,7 @@ class ReservationController {
         reservationService.DeleteReservation(uito);
         getAllReservations();
     }
-    @PostConstruct
+
     private void getAllReservations() {
         this.setMassageUITOS(massageService.getAllMassages());
         this.setReservationUITOS(reservationService.getAllReservations());
@@ -68,6 +60,7 @@ class ReservationController {
 
     @PostConstruct
     public void init() {
+        getAllReservations();
         sortBy = new ArrayList<>();
         sortBy.add(SortMeta.builder()
                 .field("id")
@@ -99,7 +92,7 @@ class ReservationController {
         return sortBy;
     }
 
-    private ReservationUITO getReservationUITO() {
+    public ReservationUITO getReservationUITO() {
         return this.reservationUITO;
     }
 

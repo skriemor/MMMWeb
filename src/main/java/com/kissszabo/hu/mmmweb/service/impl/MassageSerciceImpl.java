@@ -52,6 +52,13 @@ public class MassageSerciceImpl implements MassageService {
     }
 
     @Override
+    public MassageUITO getMassageByName(String name) {
+        var dto = repo.findMassageByName(name);
+        var uito = new MassageUITO();
+        BeanUtils.copyProperties(dto,uito);
+        return uito;
+    }
+    @Override
     @Transactional
     public void deleteMassage(MassageUITO massageUiTO) {
         repo.deleteById(massageUiTO.getId());
