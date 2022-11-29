@@ -33,7 +33,7 @@ class LoadDatabase {
     {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("org.h2.Driver");
-        dataSourceBuilder.url("jdbc:h2:file:C:/temp/test");
+        dataSourceBuilder.url("jdbc:h2:file:C:/temp/testDB");
         dataSourceBuilder.username("sa");
         dataSourceBuilder.password("");
         return dataSourceBuilder.build();
@@ -42,23 +42,22 @@ class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(MassageService mService, ReservationService rService) {
         return args -> {
-
-
+            /*
             MassageUITO uito = new MassageUITO();
             uito.setName("saras");
             uito.setId(0L);
             uito.setLength(15);
-            //mService.saveMassage(uito);
+            mService.saveMassage(uito);
+            uito = mService.saveMassage(uito);
             ReservationUITO uito1 = new ReservationUITO();
             uito1.setCustomerEmail("fg@gg.com");
             uito1.setStartDate(LocalDateTime.now());
             uito1.setId(0L);
-            uito = mService.getMassageByName(uito.getName());
             uito1.setMassageType(uito);
             uito1.setEndDate(LocalDateTime.now().plusMinutes(uito.getLength()));
             log.info("" + uito1.toString() +"\n" + uito.toString());
-            //rService.saveReservation(uito1);
-
+            rService.saveReservation(uito1);
+            */
         };
 
     }
