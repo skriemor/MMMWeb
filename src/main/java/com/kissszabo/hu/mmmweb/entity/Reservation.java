@@ -1,12 +1,10 @@
 package com.kissszabo.hu.mmmweb.entity;
 
-import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Calendar;
 
 @Entity
 @Table(name = "RESERVATION")
@@ -20,12 +18,12 @@ public class Reservation implements Serializable {
     private Massage massage;
 
     @Column(name = "startdate")
-    @DateTimeFormat(pattern = "yyyy.MM.dd")
+    @DateTimeFormat(pattern = "yyyy.MM.dd HH:mm")
     LocalDateTime startDate;
     @Column(name = "email")
     String customerEmail;
     @Column(name = "enddate")
-    @DateTimeFormat(pattern = "yyyy.MM.dd")
+    @DateTimeFormat(pattern = "yyyy.MM.dd HH:mm")
     LocalDateTime endDate;
 
     public LocalDateTime getEndDate() {
@@ -52,7 +50,6 @@ public class Reservation implements Serializable {
     public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
-
 
 
     public Long getId() {

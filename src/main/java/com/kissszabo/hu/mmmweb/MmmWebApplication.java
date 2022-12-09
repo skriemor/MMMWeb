@@ -1,5 +1,6 @@
 package com.kissszabo.hu.mmmweb;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -24,6 +25,7 @@ public class MmmWebApplication {
 
 	@Bean
 	ServletRegistrationBean jsfServletRegistration (ServletContext servletContext) {
+
 		//spring boot only works if this is set
 		servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
 

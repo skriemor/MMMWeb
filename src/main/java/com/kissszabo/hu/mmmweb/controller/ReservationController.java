@@ -3,6 +3,7 @@ package com.kissszabo.hu.mmmweb.controller;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.kissszabo.hu.mmmweb.dto.MassageUITO;
 import com.kissszabo.hu.mmmweb.dto.ReservationUITO;
 import com.kissszabo.hu.mmmweb.service.MassageService;
@@ -13,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.annotation.SessionScope;
+
 import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import java.util.logging.Logger;
@@ -32,15 +34,15 @@ public class ReservationController implements Serializable {
     private MassageUITO massageUITO;
 
 
-
     private ReservationUITO reservationUITO;
     private List<MassageUITO> massageUITOS;
     private List<ReservationUITO> reservationUITOS;
 
     public void editReservation(ReservationUITO ruito) {
         this.setActionLabel("Update");
-        BeanUtils.copyProperties(ruito,this.getReservationUITO());
+        BeanUtils.copyProperties(ruito, this.getReservationUITO());
     }
+
     public void uiSaveReservation() {
         log.info("attempting to save" + this.reservationUITO.toString());
         reservationService.saveReservation(this.getReservationUITO());
@@ -48,6 +50,7 @@ public class ReservationController implements Serializable {
         this.setReservationUITO(new ReservationUITO());
 
     }
+
     public void deleteReservation(ReservationUITO uito) {
         reservationService.DeleteReservation(uito);
         getAllReservations();
@@ -75,6 +78,7 @@ public class ReservationController implements Serializable {
         this.setReservationUITOS(reservationService.getAllReservations());
         this.setActionLabel("Add");
     }
+
     public void setActionLabel(String actionLabel) {
         this.actionLabel = actionLabel;
     }
