@@ -6,8 +6,11 @@ import com.kissszabo.hu.mmmweb.entity.Massage;
 import com.kissszabo.hu.mmmweb.entity.Reservation;
 import org.springframework.beans.BeanUtils;
 
+import java.util.logging.Logger;
+
 public class ReservationTOMapper {
 
+    Logger log = Logger.getLogger("RTOLOG");
     private ReservationTOMapper mapper;
     public ReservationTOMapper(){}
 
@@ -30,6 +33,7 @@ public class ReservationTOMapper {
         BeanUtils.copyProperties(uito,dto);
         BeanUtils.copyProperties(uito.getMassageType(),massageDto);
         dto.setMassage(massageDto);
+        dto.setEndDate(dto.getStartDate().plusMinutes(massageDto.getLength()));
         return dto;
     }
 

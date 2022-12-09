@@ -28,6 +28,10 @@ public class Reservation implements Serializable {
     @DateTimeFormat(pattern = "yyyy.MM.dd")
     LocalDateTime endDate;
 
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
 
     public Reservation(Massage massage, LocalDateTime startDate, String customerEmail) {
         this.massage = massage;

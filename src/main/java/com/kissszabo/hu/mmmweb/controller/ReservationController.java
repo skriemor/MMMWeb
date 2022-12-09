@@ -1,5 +1,6 @@
 package com.kissszabo.hu.mmmweb.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import com.kissszabo.hu.mmmweb.dto.MassageUITO;
@@ -14,14 +15,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.context.annotation.SessionScope;
 import javax.annotation.PostConstruct;
 import java.io.Serializable;
-
-
+import java.util.logging.Logger;
 
 
 @SessionScope
 @Controller("reservationController")
 public class ReservationController implements Serializable {
 
+    Logger log = Logger.getLogger("RCLOG");
     private List<SortMeta> sortBy;
     @Autowired
     ReservationService reservationService;
@@ -41,6 +42,7 @@ public class ReservationController implements Serializable {
         BeanUtils.copyProperties(ruito,this.getReservationUITO());
     }
     public void uiSaveReservation() {
+        log.info("attempting to save" + this.reservationUITO.toString());
         reservationService.saveReservation(this.getReservationUITO());
         getAllReservations();
         this.setReservationUITO(new ReservationUITO());
@@ -90,6 +92,9 @@ public class ReservationController implements Serializable {
     }
 
     public ReservationUITO getReservationUITO() {
+        if (this.reservationUITO == null) {
+            this.reservationUITO = new ReservationUITO();
+        }
         return this.reservationUITO;
     }
 

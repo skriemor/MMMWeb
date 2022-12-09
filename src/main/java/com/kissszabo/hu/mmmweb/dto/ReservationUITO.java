@@ -5,11 +5,12 @@ import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public class ReservationUITO implements Serializable {
-        private Long id;
-        MassageUITO massageType;
-        LocalDateTime startDate;
-        String customerEmail;
-    LocalDateTime  endDate;
+    private Long id;
+    MassageUITO massageType;
+    LocalDateTime startDate;
+    String customerEmail;
+    LocalDateTime endDate;
+
 
     public Long getId() {
         return id;
@@ -27,11 +28,11 @@ public class ReservationUITO implements Serializable {
         this.massageType = massageType;
     }
 
-    public LocalDateTime  getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime  startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
@@ -43,11 +44,11 @@ public class ReservationUITO implements Serializable {
         this.customerEmail = customerEmail;
     }
 
-    public LocalDateTime  getEndDate() {
+    public LocalDateTime getEndDate() {
         return this.endDate;
     }
 
-    public void setEndDate(LocalDateTime  endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 

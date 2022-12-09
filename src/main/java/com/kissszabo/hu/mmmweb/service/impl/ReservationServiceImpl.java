@@ -22,25 +22,17 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public List<ReservationUITO> getAllReservations() {
         return new ArrayList<ReservationUITO>(repo.findAll().stream()
-                .map(r ->  mapper.rDtoToUito(r))
-                .toList());
+                .map(r -> mapper.rDtoToUito(r)).toList());
     }
-//This could potentially be dysfunctional due to relational database
-    /*
-    @Override
-    public ReservationUITO saveReservation(ReservationUITO uito) {
-        repo.save(mapper.rUitoToDto(uito));
-        return uito;
-    }
-*/
 
     @Override
     public ReservationUITO saveReservation(ReservationUITO uito) {
         return mapper.rDtoToUito(repo.save(mapper.rUitoToDto(uito)));
     }
+
     @Override
     public ReservationUITO getReservation(ReservationUITO uito) {
-        return  mapper.rDtoToUito(repo.findById(uito.getId()).get());
+        return mapper.rDtoToUito(repo.findById(uito.getId()).get());
     }
 
     @Override

@@ -4,14 +4,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
 </h:head>
 
 <h:body style="margin-left:50px">
     <h2> sortlist</h2>
-    <h:form>
+    <h:form id="resForm">
+        <p:panel header="Reservations" id="resInfo">
+            <h:panelGrid columns="2">
+                <p:outputLabel for="email" value="Customer e-mail: " />
+                <p:inputText id="email" size="40"
+                             value="#{reservationController.reservationUITO.customerEmail}" required="true"
+                             requiredMessage="Please enter the customer's e-mail " />
+
+                <p:outputLabel for="massagename" value="Massage " />
+                <p:selectOneMenu id="massagename"
+                                 value="#{reservationController.reservationUITO.massageType}"
+                                 style="width:150px" converter="#{massageConverter}">
+                    <f:selectItems value="#{reservationController.massageUITOS}"
+                                   var="massageUITO" itemLabel="#{massageUITO.name}"
+                                   itemValue="#{massageUITO}" />
+                </p:selectOneMenu>
+
+                <p:outputLabel for="date" value="Date"/>
+                <p:datePicker id="date" value="#{reservationController.reservationUITO.startDate}" />
+
+                <h:commandButton value="#{reservationController.actionLabel}"
+                                 action="#{reservationController.uiSaveReservation}">
+                    <f:ajax execute="resForm" render="reservationTable resinfo" />
+                </h:commandButton>
+
+            </h:panelGrid>
+        </p:panel>
+
+
+
+
+
         <div class="card">
             <p:dataTable var="reservation" value="#{reservationController.reservationUITOS}" id="reservationTable"
                          lazy="false" sortBy="#{reservationController.sortBy}" sortMode="single"
@@ -32,6 +64,13 @@
                 </p:column>
                 <p:column headerText="Expected Finish Date" sortBy="#{reservation.endDate}" filterBy="#{reservation.endDate}">
                     <h:outputText value="#{reservation.endDate}"/>
+                </p:column>
+                <p:column id="action">
+                    <f:facet name="header">Action</f:facet>
+                    <h:commandLink value="Delete"
+                                       action="#{reservationController.deleteReservation(reservation)}">
+                        <f:ajax execute="action" render="reservationTable" />
+                    </h:commandLink>
                 </p:column>
             </p:dataTable>
         </div>
