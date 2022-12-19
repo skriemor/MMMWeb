@@ -30,15 +30,20 @@ class LoadDatabase {
 
 
     @Bean
-    CommandLineRunner initDatabase(MassageService mService, ReservationService rService) {
+    CommandLineRunner initDatabase(MassageService mService, ReservationService rService, MassageRepository repo) {
         return args -> {
-            /*
+/*
+            repo.deleteAll();
             MassageUITO uito = new MassageUITO();
             uito.setName("saras");
             uito.setId(0L);
             uito.setLength(15);
-            mService.saveMassage(uito);
             uito = mService.saveMassage(uito);
+            var uito2 = new MassageUITO();
+            uito2.setName("nem saras");
+            uito.setId(0L);
+            uito2.setLength(25);
+            uito2 = mService.saveMassage(uito2);
             ReservationUITO uito1 = new ReservationUITO();
             uito1.setCustomerEmail("fg@gg.com");
             uito1.setStartDate(LocalDateTime.now());
@@ -47,7 +52,7 @@ class LoadDatabase {
             uito1.setEndDate(LocalDateTime.now().plusMinutes(uito.getLength()));
             log.info("" + uito1.toString() +"\n" + uito.toString());
             rService.saveReservation(uito1);
-            */
+*/
         };
 
     }

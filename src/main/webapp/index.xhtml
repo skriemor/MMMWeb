@@ -17,13 +17,13 @@
                  lazy="false" sortBy="#{massageController.sortBy}" sortMode="single"
                  allowUnsorting="true" >
 
-        <p:column headerText="Id" sortBy="#{massage.id}" filterBy="#{massage.id}">
+        <p:column headerText="Id" sortBy="#{massage.id}" filterBy="#{massage.id}" filterMatchMode="contains">
             <h:outputText value="#{massage.id}"/>
         </p:column>
-        <p:column headerText="Name" sortBy="#{massage.name}" filterBy="#{massage.name}">
+        <p:column headerText="Name" sortBy="#{massage.name}" filterBy="#{massage.name}" filterMatchMode="contains">
             <h:outputText  value="#{massage.name}"/>
         </p:column>
-        <p:column headerText="Length" sortBy="#{massage.length}" filterBy="#{massage.length}">
+        <p:column headerText="Length" sortBy="#{massage.length}" filterBy="#{massage.length}" filterMatchMode="contains">
             <h:outputText value="#{massage.length}"/>
         </p:column>
 
